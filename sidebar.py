@@ -57,7 +57,7 @@ def show_history():
             with cols[1]:
                 session_id = item['session_id']
                 s_idx = f"select_{session_id}_{idx}"
-                # print_and_log(s_idx)
+                print_and_log(s_idx)
                 clicked = st.button(f"보기", key=s_idx)
                 if clicked:
                     st.session_state.selected_history = []
