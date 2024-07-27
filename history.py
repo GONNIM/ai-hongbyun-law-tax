@@ -7,6 +7,7 @@ from datetime import datetime
 from logger import print_and_log
 
 
+
 if 'user_key' not in st.session_state:
     st.session_state.user_key = None
 
@@ -23,6 +24,8 @@ HISTORY_CSV_FILE = 'chatbot_history.csv'
 
 # CSV File Initialize
 def initialize_csv_file():
+    print_and_log("initialize_csv_file")
+
     if not os.path.exists(HISTORY_CSV_FILE):
         with open(HISTORY_CSV_FILE, mode='w', newline='') as file:
             writer = csv.writer(file)
@@ -88,6 +91,7 @@ def load_history(target_session_id):
     else:
         history = []
 
+    print_and_log(f"load_history: {target_session_id}")
     selected_history = [item for item in history if item['id'] == target_session_id]
     return selected_history
 
