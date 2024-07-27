@@ -35,10 +35,7 @@ def get_system_info():
     elif platform.system() == "Darwin":
         cpu_id = os.popen("sysctl -n machdep.cpu.brand_string").read().strip()
 
-    # User Name
-    username = os.getlogin()
-
-    system_info = f"{mac_address}-{cpu_id}-{username}"
+    system_info = f"{mac_address}-{cpu_id}"
     return system_info
 
 
