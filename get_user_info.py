@@ -36,30 +36,30 @@ def get_system_info():
         cpu_id = os.popen("sysctl -n machdep.cpu.brand_string").read().strip()
 
     # Hard Disk Serial Number
-    disk_serial = ""
-    if platform.system() == "Windows":
-        disk_serial = os.popen("wmic diskdrive get serialnumber").read().strip().split('\n')[1]
-    elif platform.system() == "Linux":
-        disk_serial = os.popen("lsblk -o SERIAL").read().strip().split('\n')[1]
-    elif platform.system() == "Darwin":
-        disk_serial_output = os.popen("system_profiler SPStorageDataType | grep 'Serial Number'").read().strip().split('\n')
-        if disk_serial_output:
-            disk_serial = disk_serial_output[0].split(":")[1].strip() if len(disk_serial_output[0].split(":")) > 1 else ""
+    # disk_serial = ""
+    # if platform.system() == "Windows":
+    #     disk_serial = os.popen("wmic diskdrive get serialnumber").read().strip().split('\n')[1]
+    # elif platform.system() == "Linux":
+    #     disk_serial = os.popen("lsblk -o SERIAL").read().strip().split('\n')[1]
+    # elif platform.system() == "Darwin":
+    #     disk_serial_output = os.popen("system_profiler SPStorageDataType | grep 'Serial Number'").read().strip().split('\n')
+    #     if disk_serial_output:
+    #         disk_serial = disk_serial_output[0].split(":")[1].strip() if len(disk_serial_output[0].split(":")) > 1 else ""
 
     # OS Install Date
-    os_install_date = ""
-    if platform.system() == "Windows":
-        os_install_date = os.popen("wmic os get installdate").read().strip().split('\n')[1]
-    elif platform.system() == "Linux":
-        os_install_date = os.popen("ls -ld /var/log/installer | awk '{print $6 $7 $8}'").read().strip()
-    elif platform.system() == "Darwin":
-        os_install_date_output = os.popen("system_profiler SPSoftwareDataType | grep 'Time since boot'").read().strip().split(":")
-        os_install_date = os_install_date_output[1].strip() if len(os_install_date_output) > 1 else ""
+    # os_install_date = ""
+    # if platform.system() == "Windows":
+    #     os_install_date = os.popen("wmic os get installdate").read().strip().split('\n')[1]
+    # elif platform.system() == "Linux":
+    #     os_install_date = os.popen("ls -ld /var/log/installer | awk '{print $6 $7 $8}'").read().strip()
+    # elif platform.system() == "Darwin":
+    #     os_install_date_output = os.popen("system_profiler SPSoftwareDataType | grep 'Time since boot'").read().strip().split(":")
+    #     os_install_date = os_install_date_output[1].strip() if len(os_install_date_output) > 1 else ""
 
     # User Name
     username = os.getlogin()
 
-    system_info = f"{mac_address}{cpu_id}{disk_serial}{os_install_date}{username}"
+    # system_info = f"{mac_address}{cpu_id}{disk_serial}{os_install_date}{username}"
     system_info = f"{mac_address}-{cpu_id}-{username}"
     return system_info
 
