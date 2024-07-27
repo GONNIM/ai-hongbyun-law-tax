@@ -58,12 +58,13 @@ def show_history():
                 session_id = item['session_id']
                 s_idx = f"select_{session_id}_{idx}"
                 print_and_log(s_idx)
-                clicked = st.button(f"보기", key=s_idx)
-                if clicked:
+                if st.button(f"보기", key=s_idx):
                     st.session_state.selected_history = []
                     st.session_state.message_list = []
                     st.session_state.selected_history = history.load_history(session_id)
+                    print_and_log(st.session_state.selected_history)
                     st.session_state.session_id = session_id
+                    print_and_log(st.session_state.session_id)
                     selected_history_to_message_list()
                     st.rerun()
             with cols[2]:
@@ -71,8 +72,7 @@ def show_history():
                 subject = item['subject']
                 timestamp = item['timestamp']
                 s_idx = f"delete_{session_id}_{idx}"
-                clicked = st.button(f"삭제", key=s_idx)
-                if clicked:
+                if st.button(f"삭제", key=s_idx):
                     delete_history(session_id, subject, timestamp)                        
 
             idx += 1
