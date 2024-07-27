@@ -86,10 +86,13 @@ def load_history(target_session_id):
         with open(HISTORY_FILE, 'r') as f:
             try:
                 history = json.load(f)
+                print_and_log(f"load_history: Exist history")
             except json.JSONDecodeError:
                 history = []
+                print_and_log(f"load_history: json.JSONDecodeError")
     else:
         history = []
+        print_and_log(f"load_history: Not Exist history")
 
     print_and_log(f"load_history: {target_session_id}")
     selected_history = [item for item in history if item['id'] == target_session_id]
