@@ -94,8 +94,8 @@ def load_history(target_session_id):
         history = []
         print_and_log(f"load_history: Not Exist history")
 
-    print_and_log(f"load_history: {target_session_id}")
     selected_history = [item for item in history if item['id'] == target_session_id]
+    print_and_log(f"load_history: {selected_history}")
     return selected_history
 
 
