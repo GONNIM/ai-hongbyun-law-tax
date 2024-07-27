@@ -5,7 +5,7 @@ import history
 from logger import print_and_log
 
 
-MAX_SUBJECT_LEN = 15
+MAX_SUBJECT_LEN = 14
 
 if 'sidebar_open' not in st.session_state:
     st.session_state.sidebar_open = True
